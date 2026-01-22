@@ -5,7 +5,9 @@ import {
   RocketOutlined,
   ThunderboltOutlined,
   SafetyOutlined,
+  AppstoreOutlined,
 } from "@ant-design/icons";
+import Link from "next/link";
 
 const { Title, Paragraph } = Typography;
 
@@ -84,10 +86,14 @@ export default function Home() {
 
           <div style={{ textAlign: "center" }}>
             <Space size="large">
-              <Button type="primary" size="large" icon={<RocketOutlined />}>
-                开始使用
+              <Link href="/games">
+                <Button type="primary" size="large" icon={<AppstoreOutlined />}>
+                  游戏管理 Demo
+                </Button>
+              </Link>
+              <Button size="large" icon={<RocketOutlined />}>
+                查看文档
               </Button>
-              <Button size="large">查看文档</Button>
             </Space>
           </div>
         </Card>

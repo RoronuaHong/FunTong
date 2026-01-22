@@ -16,17 +16,27 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include, reverse
-from django.shortcuts import HttpResponse
+from django.urls import path, include
+from django.http import JsonResponse
 
-# def index(request):
-#     print(222, reverse('index'))
-#     return HttpResponse("Hello,  World!")
+
+def api_root(request):
+    return JsonResponse({
+        'code': 0,
+        'message': 'FunTong API',
+        'data': {
+            'version': '1.0.0',
+            'endpoints': {
+                'games': '/api/games/',
+                'tags': '/api/tags/',
+                'stats': '/api/stats/',
+            }
+        }
+    })
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("index/", index, name='index'),
-    # path("game/", views.game_detail),
-    # path("game/<int:game_id>", views.game_detail_path),
-    path("game/", include("game.urls")),
+    path("api/", api_root),
+    path("api/", include("game.urls")),
 ]

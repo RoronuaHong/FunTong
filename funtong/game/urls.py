@@ -1,11 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from . import views
 
+router = DefaultRouter()
+router.register(r'games', views.GameViewSet, basename='game')
+router.register(r'tags', views.TagViewSet, basename='tag')
+
 urlpatterns = [
-    path('index', views.index, name='index'),
-    path('list', views.game_list, name='list'),
-    path('add', views.add_game, name='add_game'),
-    path('query', views.query_game, name='query_game'),
-    path('filter', views.filter_game, name='filter_game'),
-    path('detail/<int:game_id>', views.game_detail, name='game_detail'),
+    path('', include(router.urls)),
+    path('stats/', views.game_stats, name='game_stats'),
 ]

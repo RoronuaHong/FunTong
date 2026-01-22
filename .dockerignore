@@ -1,0 +1,40 @@
+# 根目录 .dockerignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+venv/
+env/
+
+# Node
+node_modules/
+.next/
+npm-debug.log*
+
+# 数据库
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# 文档
+*.md
+
+# 日志
+*.log
+
+# 临时文件
+.django.pid
+.nextjs.pid
+.scrapy/
