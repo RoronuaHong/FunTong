@@ -84,7 +84,7 @@ DATABASES = {
         "NAME": os.environ.get("DB_NAME", "funtong"),
         "USER": os.environ.get("DB_USER", "root"),
         "PASSWORD": os.environ.get("DB_PASSWORD", "a1234560"),
-        "HOST": os.environ.get("DB_HOST", "127.0.0.1"),
+        "HOST": os.environ.get("DB_HOST", "mysql"),  # Docker 服务名
         "PORT": os.environ.get("DB_PORT", "3306"),
     }
 }
