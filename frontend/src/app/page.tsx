@@ -13,14 +13,13 @@ const { Title, Paragraph } = Typography;
 
 export default function Home() {
   return (
-    <div style={{ minHeight: "100vh", padding: "48px 24px", background: "#f5f5f5" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <Title level={1}>欢迎使用 FunTong</Title>
-          <Paragraph style={{ fontSize: 18, color: "#666" }}>
-            基于 Next.js 15 + TypeScript + Ant Design 5 构建的现代化应用
-          </Paragraph>
-        </div>
+    <div>
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <Title level={1}>欢迎使用 FunTong</Title>
+        <Paragraph style={{ fontSize: 18, color: "#666" }}>
+          基于 Next.js 15 + TypeScript + Ant Design 5 构建的现代化游戏管理平台
+        </Paragraph>
+      </div>
 
         <Row gutter={[24, 24]}>
           <Col xs={24} md={8}>
@@ -97,7 +96,6 @@ export default function Home() {
             </Space>
           </div>
         </Card>
-      </div>
     </div>
   );
 }

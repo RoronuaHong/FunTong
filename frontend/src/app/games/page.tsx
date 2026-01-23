@@ -192,9 +192,8 @@ export default function GamesPage() {
   ];
 
   return (
-    <div style={{ padding: 24, background: "#f5f5f5", minHeight: "100vh" }}>
-      <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-        <h1 style={{ marginBottom: 24 }}>游戏管理</h1>
+    <div>
+      <h1 style={{ marginBottom: 24 }}>游戏管理</h1>
 
         {stats && (
           <Row gutter={16} style={{ marginBottom: 24 }}>
@@ -304,7 +303,6 @@ export default function GamesPage() {
             </Form.Item>
           </Form>
         </Modal>
-      </div>
     </div>
   );
 }
