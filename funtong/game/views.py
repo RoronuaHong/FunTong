@@ -46,7 +46,7 @@ class GameViewSet(viewsets.ModelViewSet):
 
         if page is not None:
             serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response({
+            return Response({
                 'code': 0,
                 'message': 'success',
                 'data': {
@@ -59,7 +59,10 @@ class GameViewSet(viewsets.ModelViewSet):
         return Response({
             'code': 0,
             'message': 'success',
-            'data': serializer.data
+            'data': {
+                'list': serializer.data,
+                'total': queryset.count(),
+            }
         })
 
     def create(self, request, *args, **kwargs):
