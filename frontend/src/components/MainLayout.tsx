@@ -74,7 +74,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   ];
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh", background: "transparent" }}>
       <Sider
         trigger={null}
         collapsible
@@ -86,6 +86,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
           left: 0,
           top: 0,
           bottom: 0,
+          background: "rgba(0, 0, 0, 0.95)",
+          backdropFilter: "blur(10px)",
+          borderRight: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
         {/* Logo 区域 */}
@@ -97,6 +100,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             justifyContent: "center",
             padding: collapsed ? "16px 0" : "16px",
             transition: "all 0.2s",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           }}
         >
           <Image
@@ -126,7 +130,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
           mode="inline"
           selectedKeys={[pathname]}
           items={menuItems}
-          style={{ borderRight: 0 }}
+          style={{
+            borderRight: 0,
+            background: "transparent",
+          }}
         />
       </Sider>
 
@@ -135,14 +142,16 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <Header
           style={{
             padding: "0 24px",
-            background: colorBgContainer,
+            background: "rgba(255, 255, 255, 0.98)",
+            backdropFilter: "blur(10px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            boxShadow: "0 1px 4px rgba(0,21,41,.08)",
+            boxShadow: "0 1px 0 rgba(0, 0, 0, 0.06)",
             position: "sticky",
             top: 0,
             zIndex: 1,
+            borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
           }}
         >
           <Button
@@ -153,6 +162,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               fontSize: "16px",
               width: 64,
               height: 64,
+              color: "#000",
             }}
           />
 
@@ -160,7 +170,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             <Dropdown menu={{ items: userMenuItems }} placement="bottomRight">
               <Avatar
                 style={{
-                  backgroundColor: "#1890ff",
+                  backgroundColor: "#000",
                   cursor: "pointer",
                 }}
                 icon={<UserOutlined />}
@@ -175,8 +185,11 @@ export default function MainLayout({ children }: MainLayoutProps) {
             margin: "24px 16px",
             padding: 24,
             minHeight: 280,
-            background: colorBgContainer,
+            background: "rgba(255, 255, 255, 0.98)",
+            backdropFilter: "blur(10px)",
             borderRadius: borderRadiusLG,
+            border: "1px solid rgba(0, 0, 0, 0.06)",
+            boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
           }}
         >
           {children}

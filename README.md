@@ -1,5 +1,9 @@
 # FunTong - 全栈游戏管理系统
 
+![Build Status](https://github.com/RoronuaHong/FunTong/actions/workflows/docker-build-push.yml/badge.svg)
+[![Docker Backend](https://img.shields.io/docker/v/18606977713/funtong-backend?label=backend)](https://hub.docker.com/r/18606977713/funtong-backend)
+[![Docker Frontend](https://img.shields.io/docker/v/18606977713/funtong-frontend?label=frontend)](https://hub.docker.com/r/18606977713/funtong-frontend)
+
 一个完整的前后端分离项目示例，展示了 Django + Next.js 的最佳实践。
 
 ## 项目概述
@@ -23,7 +27,43 @@
 
 ## 快速开始
 
-### 方式一：使用启动脚本（推荐）
+### 设置背景图片（可选）
+
+项目支持动态背景轮播，需要放置 4 张背景图片：
+
+```bash
+# 使用设置脚本
+./setup-backgrounds.sh
+
+# 或手动复制图片到
+frontend/public/backgrounds/
+```
+
+需要的图片文件：am.jpg, dr.jpg, pom.jpg, wr.jpg
+
+详细说明请查看 [BACKGROUND_SETUP.md](./BACKGROUND_SETUP.md)
+
+### 方式一：Docker 部署（推荐）
+
+```bash
+# 拉取最新镜像并启动服务
+docker-compose pull
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+
+# 查看日志
+docker-compose logs -f
+```
+
+访问应用：
+- 前端: http://localhost:3000
+- 后端 API: http://localhost:8000
+
+详细部署文档请查看 [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+### 方式二：使用启动脚本
 
 ```bash
 # 一键启动前后端
@@ -33,7 +73,7 @@
 ./stop.sh
 ```
 
-### 方式二：手动启动
+### 方式三：手动启动
 
 #### 1. 启动后端
 
@@ -264,16 +304,19 @@ python create_test_data.py
    - 数据库索引优化
    - CDN 加速
 
-4. **部署**
-   - Docker 容器化
+4. **部署** ✅
+   - ✅ Docker 容器化
+   - ✅ GitHub Actions CI/CD
    - Nginx 配置
-   - CI/CD 流程
+   - 生产环境优化
 
 ## 文档
 
-- [详细技术文档](./FULL_STACK_DEMO.md)
-- [前端 README](./frontend/README.md)
-- [快速启动指南](./frontend/QUICK_START.md)
+- [部署指南](./DEPLOYMENT.md) - Docker 和 GitHub Actions 部署
+- [详细技术文档](./FULL_STACK_DEMO.md) - 全栈开发说明
+- [Docker 指南](./DOCKER_GUIDE.md) - Docker 详细配置
+- [爬虫指南](./CRAWLER_GUIDE.md) - Scrapy 爬虫使用
+- [使用说明](./HOW_TO_USE.md) - 快速上手教程
 
 ## License
 

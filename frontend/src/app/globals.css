@@ -9,9 +9,61 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif;
+  position: relative;
+}
+
+/* 优化表格和卡片在背景上的显示 - 黑白风格 */
+.ant-table-wrapper,
+.ant-card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ant-table {
+  background: transparent !important;
+}
+
+.ant-table-thead > tr > th {
+  background: rgba(0, 0, 0, 0.02) !important;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* 优化模态框 - 黑白风格 */
+.ant-modal-content {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* 优化统计卡片 */
+.ant-statistic {
+  background: transparent;
+}
+
+.ant-statistic-title {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.ant-statistic-content {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
 }

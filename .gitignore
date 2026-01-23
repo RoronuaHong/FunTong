@@ -69,3 +69,10 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Background Images (large files)
+frontend/public/backgrounds/*.jpg
+frontend/public/backgrounds/*.jpeg
+frontend/public/backgrounds/*.png
+!frontend/public/backgrounds/README.md
+!frontend/public/backgrounds/.gitkeep

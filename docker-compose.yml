@@ -53,7 +53,9 @@ services:
 
   # 前端服务 - Next.js
   frontend:
-    image: 18606977713/funtong-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: funtong-frontend
     ports:
       - "3000:3000"
