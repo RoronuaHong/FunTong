@@ -10,12 +10,11 @@ const { Title, Paragraph } = Typography;
 
 export default function AboutPage() {
   return (
-    <div style={{ minHeight: "100vh", padding: "48px 24px", background: "#f5f5f5" }}>
-      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <Card>
-          <Space direction="vertical" size="large" style={{ width: "100%" }}>
-            <div>
-              <Title level={2}>关于 FunTong</Title>
+    <div>
+      <Card>
+        <Space direction="vertical" size="large" style={{ width: "100%" }}>
+          <div>
+            <Title level={2}>关于 FunTong</Title>
               <Paragraph>
                 FunTong 是一个基于现代 Web 技术栈构建的应用平台，
                 致力于提供高效、可靠的解决方案。
@@ -71,7 +70,6 @@ export default function AboutPage() {
             </div>
           </Space>
         </Card>
-      </div>
     </div>
   );
 }

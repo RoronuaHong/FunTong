@@ -12,9 +12,8 @@ export default function SettingsPage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", padding: "48px 24px", background: "#f5f5f5" }}>
-      <div style={{ maxWidth: 800, margin: "0 auto" }}>
-        <Card title="系统设置">
+    <div>
+      <Card title="系统设置">
           <Form
             form={form}
             layout="vertical"
@@ -81,7 +80,6 @@ export default function SettingsPage() {
             </Form.Item>
           </Form>
         </Card>
-      </div>
     </div>
   );
 }
