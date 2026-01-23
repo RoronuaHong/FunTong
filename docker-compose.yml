@@ -1,27 +1,51 @@
 version: '3.8'
 
 services:
+  # 数据库服务 - MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: funtong-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=a1234560
+      - MYSQL_DATABASE=funtong
+      - MYSQL_USER=funtong
+      - MYSQL_PASSWORD=a1234560
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - funtong-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pa1234560"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
   # 后端服务 - Django
   backend:
-    build:
-      context: ./funtong
-      dockerfile: Dockerfile
+    image: 18606977713/funtong-backend:latest
     container_name: funtong-backend
     ports:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=funtong.settings
       - PYTHONUNBUFFERED=1
-    volumes:
-      # 持久化数据库文件
-      - ./funtong/db.sqlite3:/app/db.sqlite3
-      # 开发模式下挂载代码（可选）
-      # - ./funtong:/app
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=funtong
+      - DB_USER=root
+      - DB_PASSWORD=a1234560
+    depends_on:
+      mysql:
+        condition: service_healthy
     networks:
       - funtong-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/')"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -29,9 +53,7 @@ services:
 
   # 前端服务 - Next.js
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: 18606977713/funtong-frontend:latest
     container_name: funtong-frontend
     ports:
       - "3000:3000"
@@ -55,6 +77,6 @@ networks:
   funtong-network:
     driver: bridge
 
-# volumes:
-#   database:
-#     driver: local
+volumes:
+  mysql_data:
+    driver: local
