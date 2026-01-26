@@ -2,12 +2,28 @@
 
 import { Card, Form, Input, Button, Switch, Select, Space, message } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useEffect } from "react";
 
 export default function SettingsPage() {
   const [form] = Form.useForm();
+  const { themeMode, setThemeMode } = useTheme();
+
+  // 初始化表单时同步当前主题
+  useEffect(() => {
+    form.setFieldsValue({
+      theme: themeMode,
+    });
+  }, [themeMode, form]);
 
   const onFinish = (values: any) => {
     console.log("Settings:", values);
+    
+    // 保存主题设置
+    if (values.theme) {
+      setThemeMode(values.theme);
+    }
+    
     message.success("设置已保存");
   };
 
